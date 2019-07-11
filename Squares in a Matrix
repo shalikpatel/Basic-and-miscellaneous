@@ -1,0 +1,36 @@
+
+/*
+Given a MxN matrix, count the number of squares in the matrix.
+*/
+
+#include <iostream>
+using namespace std;
+
+long long totalSquares(int m, int n) 
+{
+    long long sum = m * n;
+    int l = min(m, n);
+    for(int i = 2; i <= l; i++) {
+        sum = sum + (m-i+1) * (n-i+1);
+    }
+    
+    return sum;
+}
+
+int main() {
+
+    int m, n;
+    cin >> m >> n;
+    
+    cout << totalSquares(m, n) << endl;
+
+	return 0;
+}
+
+/*
+INPUT:
+3 3
+
+OUTPUT:
+14
+*/
