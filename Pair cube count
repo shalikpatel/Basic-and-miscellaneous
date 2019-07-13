@@ -1,0 +1,40 @@
+/*
+Given N, count all ‘a’(>=1) and ‘b’(>=0) that satisfy the condition a3 + b3 = N.
+*/
+
+#include <iostream>
+using namespace std;
+
+int allpair(int n)
+{
+    int pair = 0;
+    for(int a = 1; a * a * a <= n; a++) {
+        for(int b = 0; b * b * b < n; b++) {
+            if(a*a*a + b*b*b == n) {
+                pair++;
+            }
+        }
+    }
+    
+    return pair ;
+}
+
+int main() {
+    
+    int n;
+    cin >> n;
+    
+    cout << allpair(n) << endl;
+
+	return 0;
+}
+
+/*
+INPUT:
+9
+
+OUTPUT:
+2
+
+Explanaton - (1, 2), (2, 1)
+*/
