@@ -1,0 +1,65 @@
+/*
+Given non-zero two integers N and M. The problem is to find the number closest to N and divisible by M. 
+If there are more than one such number, then output the one having maximum absolute value.
+*/
+#include <iostream>
+using namespace std;
+
+int closedNumber(int n, int m) 
+{
+    int r = 0;
+    int l = 0;
+    int ld = 0;
+    int rd = 0;
+    for(int i = n; ; i--) {
+        if(i % m == 0) {
+            l = i;
+            ld = n-l;
+            break;
+        }
+    }
+    for(int i = n; ; i++) {
+        if(i % m == 0) {
+            r = i;
+            rd = r-n;
+            break;
+        }
+    }
+    
+    if(rd > ld) {
+        return l;
+    } 
+    if(ld > rd) {
+        return r;
+    }
+    
+    if(abs(l) > abs(r)) {
+        return l;
+    } else {
+        return r;
+    }
+}
+
+int main() {
+    int n, m;
+    cin >> n >> m;
+    
+    cout << closedNumber(n, m) << endl;
+
+	return 0;
+}
+
+/*
+INPUT:
+14 3 
+
+OUTPUT:
+15
+================================================
+INPUT:
+-14 4
+
+OUTPUT:
+-16
+
+*/
