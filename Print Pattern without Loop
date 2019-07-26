@@ -1,0 +1,48 @@
+/*
+Print a sequence of numbers starting with N, without using loop, in which  A[i+1] = A[i] - 5,
+if  A[i]>0, else A[i+1]=A[i] + 5  repeat it until A[i]=N.
+*/
+
+#include <iostream>
+using namespace std;
+
+void printPatternTurn(int p, int n)
+{
+    if(p + 5 > n) {
+        return;
+    } else {
+        cout << p + 5 << " ";
+        printPatternTurn(p + 5, n);
+    }
+}
+
+void printPattern(int p, int n) {
+    if(p > n) {
+        return;
+    } else if(p > 0) {
+        cout << p - 5 << " ";
+        printPattern(p-5, n);
+    } else {
+        cout << p + 5 << " ";
+        printPatternTurn(p+5, n);
+    }
+}
+
+int main() {
+    int n;
+    cin >> n;
+    cout << n << " ";
+    printPattern(n, n);
+    cout << endl;
+
+	return 0;
+}
+
+/*
+
+INPUT:
+15
+
+OUTPUT:
+15 10 5 0 5 10 15
+*/
