@@ -1,0 +1,49 @@
+#include <iostream>
+using namespace std;
+
+void spiralTraversal(int arr[100][100], int m, int n)
+{
+    int i = 0;  // For Rows
+    int j = 0;  // For Columns
+    
+    while(i < m && j < n) {
+        
+        for(int k = j; k < n; k++) {
+            cout << arr[i][k] << " ";
+        }
+        i++;
+        for(int k = i; k < m; k++) {
+            cout << arr[k][n-1] << " ";
+        }
+        n--;
+        if(i < m) {
+            for(int k = n-1; k >= j; k--) {
+                cout << arr[m-1][k] << " ";
+            }
+            m--;
+        }
+        if(j < n) {
+            for(int k = m-1; k >= i; k--) {
+                cout << arr[k][j] << " ";
+            }
+            j++;
+        }
+        
+    }
+}
+
+int main() {
+    int m, n;
+    cin >> m >> n;
+    int arr[100][100];
+    for(int i = 0; i < m; i++) {
+        for(int j = 0; j < n; j++) {
+            cin >> arr[i][j];
+        }
+     }
+     
+     spiralTraversal(arr, m, n);
+     cout << endl;
+
+	return 0;
+}
