@@ -1,0 +1,25 @@
+#include<iostream>
+using namespace std;
+
+int lastDigitFib(int n)
+{
+    int a = 1;
+    int b = 1;
+    for(int i = 3; i <= n; i++) {
+        int temp = a;
+        a = (a+b) % 10;
+        b = temp;
+    }
+    
+    return a;
+}
+
+int main()
+{
+    int n;
+    cin >> n;
+    
+    cout << lastDigitFib(n) << endl;
+
+	return 0;
+}
