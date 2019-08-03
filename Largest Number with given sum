@@ -1,0 +1,39 @@
+/*
+Find the maximum number of N digits such that sum of all digit of number is S.
+*/
+
+
+#include<iostream>
+using namespace std;
+
+string largestNum(int n, int s)
+{
+    string num = "";
+    if(s > 9 * n) {
+        return "-1";
+    }
+    while(n) {
+        if(s > 9) {
+            num = num + '9';
+            s = s - 9;
+        } else {
+            num = num + to_string(s);
+            s = 0;
+        }
+        n--;
+    }
+    
+    return num;
+}
+
+int main()
+ {
+    int n;
+    int s;
+    cin >> n;
+    cin >> s;
+    
+    cout << largestNum(n, s) << endl;
+
+	return 0;
+}
