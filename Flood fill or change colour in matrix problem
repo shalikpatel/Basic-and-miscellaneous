@@ -1,0 +1,55 @@
+/*
+Given a 2D screen, location of a pixel in the screen ie(x,y) and a color(K), 
+your task is to replace color of the given pixel and all adjacent
+(excluding diagonally adjacent) same colored pixels with the given color K.
+*/
+
+#include <iostream>
+using namespace std;
+
+void changecolor(int arr[100][100], int x, int y, int k, int n, int m)
+{
+    int p = arr[x][y];
+    arr[x][y] = k;
+    if(x != 0 && arr[x-1][y] == p) {
+        changecolor(arr, x-1, y, k, n, m);
+    }
+    if(y != 0 && arr[x][y-1] == p) {
+        changecolor(arr, x, y-1, k, n, m);
+    }
+    if(x != n-1 && arr[x+1][y] == p){
+        changecolor(arr, x+1, y, k, n, m);
+    }
+    if(y != m-1 && arr[x][y+1] == p) {
+        changecolor(arr, x, y+1, k, n, m);
+    }
+
+}
+
+int main() {
+    int n;
+    int m;
+    int x;
+    int y;
+    int k;
+    cin >> n >> m;
+    int arr[100][100];
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < m; j++) {
+            cin >> arr[i][j];
+        }
+    }
+    
+    cin >> x >> y >> k;
+    
+    changecolor(arr, x, y, k, n, m);
+    
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < m; j++) {
+            cout << arr[i][j] << " ";
+        }
+    }
+    cout << endl;
+
+	return 0;
+}
